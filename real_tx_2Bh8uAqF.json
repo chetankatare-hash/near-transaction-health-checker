@@ -1,0 +1,46 @@
+{
+  "_source": "https://api.nearblocks.io/v1/account/v2.keypom.near/txns?method=create_drop",
+  "_fetched_live_on": "2026-09-10",
+  "_note": "This is one real entry taken from a live NearBlocks API response used to validate NEAR-Transaction-Health-Checker's parsing/formatting logic against real mainnet data.",
+  "id": "19178733262",
+  "receipt_id": "A6jgxWB1pqQBHkFqTVbDdbxc56XNHJdE1HWVLn16ovzQ",
+  "predecessor_account_id": "dragov.near",
+  "receiver_account_id": "v2.keypom.near",
+  "receipt_kind": "ACTION",
+  "receipt_block": {
+    "block_hash": "Esn7koKScUKH81MQE5X6eHW8LPB7wBQfXanuvC1prnGu",
+    "block_height": 159173239,
+    "block_timestamp": 1754915446444727800
+  },
+  "receipt_outcome": {
+    "gas_burnt": 5378796884351,
+    "tokens_burnt": 537879688435100000000,
+    "executor_account_id": "v2.keypom.near",
+    "status": true
+  },
+  "transaction_hash": "2Bh8uAqFLwfUic7hmFXXYsThLsCckLHU8UQq6c2thi5u",
+  "included_in_block_hash": "CJbiNR8ELJUS2vhqeKs5aAVLifoBSZrMndBHVwfqMoQx",
+  "block_timestamp": "1754915445809239853",
+  "block": {
+    "block_height": 159173238
+  },
+  "receipt_conversion_tokens_burnt": "31845454987000000000",
+  "actions": [
+    {
+      "action": "FUNCTION_CALL",
+      "method": "create_drop",
+      "deposit": 1.0426e+24,
+      "fee": 537879688435100000000,
+      "args": "{\"drop_id\": \"1754915430174\", \"metadata\": \"{\\\"dropName\\\":\\\"Darukaa NEAR account creation \\\"}\", \"public_keys\": [\"ed25519:3o9qq9uq5mzbVrKribh8git3tQrq3niKwSHyykvUPY1m\"], \"deposit_per_use\": \"1000000000000000000000000\"}"
+    }
+  ],
+  "actions_agg": {
+    "deposit": 1.0426e+24
+  },
+  "outcomes": {
+    "status": true
+  },
+  "outcomes_agg": {
+    "transaction_fee": 590758824448200000000
+  }
+}
