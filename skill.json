@@ -1,0 +1,52 @@
+{
+  "name": "NEAR Transaction Health Checker",
+  "id": "near_tx_health_checker",
+  "version": "1.0.0",
+  "description": "Analyzes a NEAR Protocol transaction hash and explains, in plain language, whether it succeeded or failed, why, and what to check next.",
+  "author": "IronClaw Community Skills",
+  "category": "blockchain",
+  "tags": ["near", "blockchain", "transaction", "debugging", "web3", "rpc"],
+  "entrypoint": "skill.py",
+  "entry_function": "execute",
+  "runtime": "python3",
+  "requirements_file": "requirements.txt",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "tx_hash": {
+        "type": "string",
+        "description": "The NEAR transaction hash to look up (base58, e.g. '2Bh8uAqFLwfUic7hmFXXYsThLsCckLHU8UQq6c2thi5u')."
+      },
+      "sender_account_id": {
+        "type": "string",
+        "description": "Optional. The account ID that signed the transaction (e.g. 'alice.near'). If omitted, the skill auto-resolves it via a public explorer API."
+      },
+      "network": {
+        "type": "string",
+        "enum": ["mainnet", "testnet"],
+        "default": "mainnet",
+        "description": "Which NEAR network the transaction is on."
+      }
+    },
+    "required": ["tx_hash"]
+  },
+  "returns": {
+    "type": "object",
+    "properties": {
+      "ok": { "type": "boolean", "description": "Whether the transaction was found and analyzed." },
+      "success": { "type": ["boolean", "null"], "description": "Whether the transaction itself succeeded on-chain." },
+      "message": { "type": "string", "description": "Human-readable, ready-to-display report." },
+      "data": { "type": "object", "description": "Structured fields for programmatic use." }
+    }
+  },
+  "examples": [
+    {
+      "input": { "tx_hash": "2Bh8uAqFLwfUic7hmFXXYsThLsCckLHU8UQq6c2thi5u", "sender_account_id": "dragov.near" },
+      "description": "Check a specific mainnet transaction with a known sender."
+    },
+    {
+      "input": { "tx_hash": "2Bh8uAqFLwfUic7hmFXXYsThLsCckLHU8UQq6c2thi5u" },
+      "description": "Check a transaction without knowing the sender; the skill resolves it automatically."
+    }
+  ]
+}
