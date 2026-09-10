@@ -1,0 +1,100 @@
+
+######################################################################
+# TEST 1 — Real mainnet transaction (SUCCESS) via NearBlocks data
+######################################################################
+Loaded real transaction: 2Bh8uAqFLwfUic7hmFXXYsThLsCckLHU8UQq6c2thi5u
+(Verifiable at: https://nearblocks.io/txns/2Bh8uAqFLwfUic7hmFXXYsThLsCckLHU8UQq6c2thi5u)
+NEAR Transaction Health Checker
+================================
+Transaction hash : 2Bh8uAqFLwfUic7hmFXXYsThLsCckLHU8UQq6c2thi5u
+Network          : mainnet
+Data source      : NearBlocks API (fallback)
+
+✅ Status: SUCCESS
+
+Sender           : dragov.near
+Receiver         : v2.keypom.near
+Block height     : 159,173,238
+Block hash       : CJbiNR8ELJUS2vhqeKs5aAVLifoBSZrMndBHVwfqMoQx
+Gas used         : 5.3788 TGas
+Fee paid         : 0.00059076 NEAR
+
+Summary: This transaction executed successfully and was confirmed on-chain.
+
+Notes:
+  - NEAR RPC unavailable (simulated: no network in this sandbox); falling back to NearBlocks.
+  - Live NEAR RPC was unavailable, so this report was built from the NearBlocks explorer API instead. Core success/failure status is still accurate, but some fields (like the exact contract error message) may be less detailed.
+
+[PASS] Real successful transaction parsed and formatted correctly.
+
+######################################################################
+# TEST 2 — Simulated NEAR RPC response for a FAILED transaction
+######################################################################
+NEAR Transaction Health Checker
+================================
+Transaction hash : 3f8VXtjkn5FsEqpKFbZU6A42K3eKJ3Ab5yQLSAmvKFnH
+Network          : mainnet
+Data source      : NEAR RPC
+
+❌ Status: FAILED
+
+Sender           : alice.near
+Receiver         : guest-book.near
+Block height     : 112,233,445
+Block hash       : FAKEBLOCKHASHFORTESTINGxxxxxxxxxxxxxxxxxxx
+Gas used         : 4.6429 TGas
+Fee paid         : 0.00046429 NEAR
+
+What went wrong (FunctionCallError):
+  The smart contract call itself failed (the contract code returned an error or panicked). Contract error message: "Smart contract panicked: message length exceeds 100 characters"
+
+What to check next:
+  Check the contract's expected arguments, your attached deposit/gas, and the method name for typos.
+
+Raw error details (for debugging):
+  {"ActionError": {"index": 0, "kind": {"FunctionCallError": {"ExecutionError": "Smart contract panicked: message length exceeds 100 characters"}}}}
+
+[PASS] Failed transaction correctly explained in plain language.
+
+######################################################################
+# TEST 3 — Invalid transaction hash input
+######################################################################
+NEAR Transaction Health Checker
+================================
+Transaction hash : not-a-real-hash!!!
+Network          : mainnet
+
+Result: COULD NOT BE CHECKED
+Reason: 'not-a-real-hash!!!' doesn't look like a NEAR transaction hash (expected a base58 string around 43-44 characters long).
+
+[PASS] Invalid hash handled gracefully, no crash.
+
+######################################################################
+# TEST 4 — Unknown/nonexistent transaction (RPC + fallback both fail)
+######################################################################
+NEAR Transaction Health Checker
+================================
+Transaction hash : 1111111111111111111111111111111111111111z
+Network          : mainnet
+
+Result: COULD NOT BE CHECKED
+Reason: The NEAR network has no record of this transaction. It may not exist, may not have been indexed yet, or the sender account is wrong.
+
+[PASS] Unknown transaction handled gracefully, no crash.
+
+######################################################################
+# TEST 5 — IronClaw execute() entrypoint (real transaction, sender omitted)
+######################################################################
+{
+  "ok": true,
+  "success": true,
+  "message": "NEAR Transaction Health Checker\n================================\nTransaction hash : 2Bh8uAqFLwfUic7hmFXXYsThLsCckLHU8UQq6c2thi5u\nNetwork          : mainnet\nData source      : NearBlocks API (fallback)\n\n\u2705 Status: SUCCESS\n\nSender           : dragov.near\nReceiver         : v2.keypom.near\nBlock height     : 159,173,238\nBlock hash       : CJbiNR8ELJUS2vhqeKs5aAVLifoBSZrMndBHVwfqMoQx\nGas used         : 5.3788 TGas\nFee paid         : 0.00059076 NEAR\n\nSummary: This transaction executed successfully and was confirmed on-chain.\n\nNotes:\n  - NEAR RPC unavailable (simulated: no network in this sandbox); falling back to NearBlocks.\n  - Live NEAR RPC was unavailable, so this report was built from the NearBlocks explorer API instead. Core success/failure status is still accurate, but some fields (like the exact contract error message) may be less detailed."
+}
+
+(data field omitted above for brevity, but is fully populated: 18 fields)
+
+[PASS] IronClaw execute() entrypoint works end-to-end.
+
+######################################################################
+# ALL TESTS PASSED
+######################################################################
